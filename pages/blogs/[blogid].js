@@ -18,30 +18,32 @@ export default function blogpage({blog,user,allComments}) {
 
      }
     return (
-        <div className="container center">
-            <h2>{blog.title}</h2>
-            <h5>Created On - {new Date(blog.createdAt).toDateString()}</h5>
-            <img src={blog.imageUrl} alt={blog.title} />
-            <p>{blog.body}</p>
+        <div className="container center" style={{height: "150vh"}}>
+            <h2 style={{fontSize: "22px", color: "white"}}>{blog.title}</h2>
+            <h5 style={{color: "yellow", fontSize: "large"}}>Created On - {new Date(blog.createdAt).toDateString()}</h5>
+            <img src={blog.imageUrl} alt={blog.title} style={{marginTop:"15px", border: "2px solid grey"}} />
+            <p style={{color: "white", fontSize: "16px" , wordBreak: "break-all", zIndex: "6"}}>{blog.body}</p>
 
             {user?
             <>
             <div className="input-field">
-                <input type="text" 
-                placeholder="add a comment" 
+                <textarea type="text" 
+                placeholder="Add a comment" 
+                style={{color: "white", padding: "10px"}}
                 value={myComment} 
                 onChange={(e)=>setMyComment(e.target.value)}/>
             </div>
             <button className="btn #fb8c00 orange darken-1" onClick={()=>makeCommet()}>Make comment</button>
             </>
-            :<h3>please login to make comments</h3>
+            :<h3 style={{fontSize: "large", color: "white"}}>Please Login to add comments</h3>
             }
             
             <hr />
             <div className="left-align">
 
+               <h3 style={{fontSize: "large", color: "yellow"}}>Comments :</h3>
                 {allCommentsBlog.map(item=>{
-                    return <h6 key={item.name}><span>{item.name}</span> {item.text}</h6>
+                    return <h6 style={{color: "yellow", fontWeight: "500"}} key={item.name}><span style={{color: "white"}}>{item.name}</span>&nbsp;:&nbsp; {item.text}</h6>
                 })}
             </div>
 

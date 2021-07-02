@@ -4,13 +4,13 @@ import 'firebase/firestore'
 import 'firebase/storage'
 
 var firebaseConfig = {
-    apiKey: "AIzaSyCfRLAa14RrN6QQZNFOaNS3VEf_jGd6xEA",
-    authDomain: "nextjsblog-50c9f.firebaseapp.com",
-    projectId: "nextjsblog-50c9f",
-    storageBucket: "nextjsblog-50c9f.appspot.com",
-    messagingSenderId: "968067246305",
-    appId: "1:968067246305:web:1fc61dad716ece73a1afa0"
-  };
+  apiKey: "AIzaSyDWFsR-_LJr_GjyU-RnAsPO_sCl1BBGhl4",
+  authDomain: "nextjsblog-1a408.firebaseapp.com",
+  projectId: "nextjsblog-1a408",
+  storageBucket: "nextjsblog-1a408.appspot.com",
+  messagingSenderId: "193527225865",
+  appId: "1:193527225865:web:b1adb13a359728babf62d8"
+};
 
 
 if(!firebase.apps.length) firebase.initializeApp(firebaseConfig)

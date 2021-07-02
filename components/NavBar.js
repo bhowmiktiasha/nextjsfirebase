@@ -1,16 +1,19 @@
 import Link from 'next/link'
 import {auth} from '../firebase'
+import { useRouter } from 'next/router'
 export default function NavBar({user}) {
+
+  const router = useRouter();
     
     return (
-        <nav>
-        <div className="nav-wrapper #fb8c00 orange darken-1">
-          <Link href="/"><a className="brand-logo">Nlogger</a></Link>
+        <nav style={{background: "transparent"}}>
+        <div className="nav-wrapper transparent darken-1" >
+          <Link href="/"><a className="brand-logo" style={{left: "auto"}}>Vlogg</a></Link>
           <ul id="nav-mobile" className="right">
             {user?
             <>
               <li><Link href="/createblog"><a>Create Blog</a></Link></li>
-              <li> <button  className="btn red" onClick={()=>auth.signOut()}>Logout</button></li>
+              <li> <button  className="btn transparent" style={{backgroundColor: "transparent !important"}} onClick={()=>{auth.signOut(); router.push("/login")} }>Logout</button></li>
             </>
             
             :
@@ -22,6 +25,18 @@ export default function NavBar({user}) {
             
           </ul>
         </div>
+
+        <style jsx>{`
+         .brand-logo {
+               left: auto;
+         }
+         @media (max-width: 768px) {
+            .brand-logo {
+               left: 46px !important;
+               }
+              }
+          `}
+</style>
       </nav>
     )
 }

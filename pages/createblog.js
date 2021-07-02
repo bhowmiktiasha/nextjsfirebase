@@ -1,10 +1,16 @@
+import router from 'next/router';
 import {useState,useEffect} from 'react'
 import { v4 as uuidv4 } from 'uuid';
 import {storage,db,serverTimestamp} from '../firebase'
+import { useRouter } from 'next/router'
 
 export default function createblog({user}) {
+
+    const router1 = useRouter()
+
     const [title,setTitle] = useState('')
     const [body,setBody] = useState('')
+    const [personname,setName] = useState('')
     const [image,setImage] = useState(null)
     const [url,setUrl] = useState('')
 
@@ -14,11 +20,13 @@ export default function createblog({user}) {
                  db.collection('blogs').add({
                   title,
                   body,
+                  personname,
                   imageUrl:url,
                   postedBy:user.uid,
                   createdAt:serverTimestamp()
               })
-              M.toast({html: 'Blog Created',classes:"green"})   
+              M.toast({html: 'Blog Created',classes:"green"})         
+               router1.push("/")
             }catch(err){
                 M.toast({html:'error creating blog',classes:"red"})    
             }
@@ -36,7 +44,7 @@ export default function createblog({user}) {
        uploadTask.on('state_changed', 
        (snapshot) => {
          var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-         if(progress == '100') M.toast({html: 'Image Uploaded',classes:"green"})    
+         if(progress == '100') M.toast({html: 'Image Uploaded',classes:"green"}) 
          
        }, 
        (error) => {
@@ -54,29 +62,40 @@ export default function createblog({user}) {
 
     }
     return (
-        <div className="input-field rootdiv">
-            <h3>Create A Blog !!</h3>
-            <input
-            type="text"
-            value={title}
-            placeholder="Title"
-            onChange={(e)=>setTitle(e.target.value)}
+        <div className="input-field rootdiv" style={{ marginTop: "30px !important", marginInline: "auto"}}>
+            <h3 style={{color: "white", fontSize: "25px" ,marginBottom: "50px"}}>Create your blog </h3>
+            <textarea
+               type="text"
+            value={personname}
+            placeholder="Your Name"
+            style={{color:"white", borderRadius: "5px", marginBottom: "5px", padding: "9px"}}
+            onChange={(e)=>setName(e.target.value)}
             
             />
             <textarea
+            type="text"
+            value={title}
+            placeholder="Blog Title"
+            style={{color:"white", borderRadius: "5px", marginBottom: "5px", padding: "9px"}}
+            onChange={(e)=>setTitle(e.target.value)}
+            
+            />
+             
+            <textarea
              type="text"
              value={body}
-             placeholder="body"
+             placeholder="Decription"
+             style={{borderRadius: "5px", color: "white",padding: "9px", height: "7rem"}}
              onChange={(e)=>setBody(e.target.value)}
             
             />
              <div className="file-field input-field">
                 <div className="btn #fb8c00 orange darken-1">
                     <span>File</span>
-                    <input type="file"  onChange={(e)=>setImage(e.target.files[0])} />
+                    <input type="file" style={{color: "white"}}  onChange={(e)=>setImage(e.target.files[0])} />
                 </div>
                 <div className="file-path-wrapper">
-                    <input className="file-path validate" type="text" />
+                    <input className="file-path validate" style={{color: "white"}} type="text" />
                 </div>
              </div>
              <button className="btn #fb8c00 orange darken-1" onClick={()=>SubmitDetails()}>Submit Post</button>
@@ -85,10 +104,16 @@ export default function createblog({user}) {
                  {`
                  
                  .rootdiv{
-                     margin:30px auto;
+                    
+                     margin-inline: auto;
                      max-width:600px;
                      padding:20px;
                      text-align:center;
+                    
+                     border-radius: 6px;
+                     height: 100vh;
+
+                    
                  }
                  `}
              </style>
