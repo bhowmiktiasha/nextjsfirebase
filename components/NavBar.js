@@ -9,9 +9,14 @@ export default function NavBar({user}) {
         <nav style={{background: "transparent"}}>
         <div className="nav-wrapper transparent darken-1" >
           <Link href="/"><a className="brand-logo" style={{left: "auto"}}>Vlogg</a></Link>
+          {/* <img src="https://lh3.googleusercontent.com/proxy/w6YCwd7PfQFE6mwTpZVrjwOGSBrMWFOwxkl-qqFIplMK6rd9mwVuWb0YaDFqyYGO7AMqufTLS_jAMyj8cXrnlktmZf88IJHdSCcTARrQYgo" style={{width: "45px", height: "41px"}} alt ="pic"/> */}
           <ul id="nav-mobile" className="right">
             {user?
             <>
+                 {/* <li> <button  className="btn transparent" style={{backgroundColor: "transparent !important"}}  >Refresh</button></li> */}
+                 {/* <button onClick={() => Router.reload('/')} > */}
+       {/* <img src="https://lh3.googleusercontent.com/proxy/SxU5q7R5mC55I3DQvFBzDur8HAMdangEvH42aHBT-uUGjAo1GclYFtvljiMXCWt05Sw9S8ESWOLeBQI9HI7JNtdmQ-YI8MOhDMd3L1b0P8I" style={{width: "30px", height: "20px"}} alt ="pic"/> */}
+        {/* </button> */}
               <li><Link href="/createblog"><a>Create Blog</a></Link></li>
               <li> <button  className="btn transparent" style={{backgroundColor: "transparent !important"}} onClick={()=>{auth.signOut(); router.push("/login")} }>Logout</button></li>
             </>

@@ -21,8 +21,9 @@ export default function blogpage({blog,user,allComments}) {
         <div className="container center" style={{height: "150vh"}}>
             <h2 style={{fontSize: "22px", color: "white"}}>{blog.title}</h2>
             <h5 style={{color: "yellow", fontSize: "large"}}>Created On - {new Date(blog.createdAt).toDateString()}</h5>
+            <h5 style={{color: "lawngreen", fontSize: "initial"}}>Posted by - {blog.personname}</h5>
             <img src={blog.imageUrl} alt={blog.title} style={{marginTop:"15px", border: "2px solid grey"}} />
-            <p style={{color: "white", fontSize: "16px" , wordBreak: "break-all", zIndex: "6"}}>{blog.body}</p>
+            <p style={{color: "white", fontSize: "16px" , wordBreak: "break-word", zIndex: "6"}}>{blog.body}</p>
 
             {user?
             <>
@@ -35,7 +36,7 @@ export default function blogpage({blog,user,allComments}) {
             </div>
             <button className="btn #fb8c00 orange darken-1" onClick={()=>makeCommet()}>Make comment</button>
             </>
-            :<h3 style={{fontSize: "large", color: "white"}}>Please Login to add comments</h3>
+            :<h3 style={{fontSize: "large", color: "yellow"}}>Please Login to add comments</h3>
             }
             
             <hr />
