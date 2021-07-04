@@ -33,7 +33,7 @@ export default function Home({ Allblogs, user, name }) {
 		<>
 			<div className="center">
 				{user ? (
-					<div style={{display: "inline-flex"}}>
+					<div style={{ display: 'inline-flex' }}>
 						<h3
 							style={{
 								marginTop: '40px',
@@ -46,15 +46,18 @@ export default function Home({ Allblogs, user, name }) {
 							Articles
 						</h3>
 
-            {/* <button   onClick={() => Router.reload('/')} > */}
 						<img
-							src="https://lh3.googleusercontent.com/proxy/w6YCwd7PfQFE6mwTpZVrjwOGSBrMWFOwxkl-qqFIplMK6rd9mwVuWb0YaDFqyYGO7AMqufTLS_jAMyj8cXrnlktmZf88IJHdSCcTARrQYgo"
-							style={{ width: '45px', height: '41px' , marginBlock: "auto", marginLeft: "5%", marginTop: "25%"}}
-              // onClick="window.location.reload();"
-              onClick={() => Router.reload('/')}
+							src="https://www.rawshorts.com/freeicons/wp-content/uploads/2017/01/blue_webpict30_1484337148-1.png"
+							style={{
+								width: '45px',
+								height: '41px',
+								marginBlock: 'auto',
+								marginLeft: '5%',
+								marginTop: '25%',
+							}}
+							onClick={() => Router.reload('/')}
 							alt="pic"
 						/>
-            {/* </button> */}
 					</div>
 				) : (
 					<h3
@@ -70,10 +73,6 @@ export default function Home({ Allblogs, user, name }) {
 					</h3>
 				)}
 
-				{/* <button onClick={() => Router.reload('/')} >
-       <img src="https://lh3.googleusercontent.com/proxy/SxU5q7R5mC55I3DQvFBzDur8HAMdangEvH42aHBT-uUGjAo1GclYFtvljiMXCWt05Sw9S8ESWOLeBQI9HI7JNtdmQ-YI8MOhDMd3L1b0P8I" style={{width: "30px", height: "20px"}} alt ="pic"/>
-        </button> */}
-				{/* <button style={{color: "yellow"}}>Refresh</button> */}
 				{blogs.map((blog) => {
 					return (
 						<>
@@ -171,14 +170,6 @@ export default function Home({ Allblogs, user, name }) {
            `}
 				</style>
 			</div>
-
-			{/* <div>
-       {end==false?
-        <button className="btn #fb8c00 orange darken-1" onClick={()=>loadMore()}>Load more</button>
-         :<h3>You have reached end</h3>
-        }
-        
-    </div> */}
 		</>
 	);
 }
